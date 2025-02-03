@@ -7,6 +7,7 @@ Everlasting Diary project! This code empower our React skills by building an int
 - React as the frontend framework.
 - TailwindCSS for styling.
 - useState and useEffect. Manage state and use effects appropriately.
+- The map() method of Array instances creates a new array populated with the results of calling a provided function on every element in the calling array.
 - LocalStorage: Store and retrieve diary entries using localStorage.
 
 # Homepage:
