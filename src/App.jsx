@@ -2,7 +2,7 @@ function App() {
   return (
     <>
       {/* test tailwindcss */}
-      <h1 class="text-5xl text-red-400 font-bold underline">
+      <h1 className="text-5xl text-red-400 font-bold underline mb-5">
         everlasting-diary
       </h1>
 
