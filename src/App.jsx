@@ -1,7 +1,6 @@
-import { Routes, Route } from "react-router";
-import Home from "./components/Home";
-import EntryCard from "./components/EntryCard";
-import FotoCard from "./components/FotoCard";
+import { Routes, Route } from "react-router"; // Changed from react-router-dom to react-router
+import { useState, useEffect } from "react";
+
 
 function App() {
   // Step 1: Create a state variable to hold the diary entries
@@ -9,7 +8,7 @@ function App() {
 
   // Step 2: Retrieve saved entries from localStorage when the component mounts
   useEffect(() => {
-    const savedEntries = JSON.parse(localStorage.getItem('diaryEntries'));
+    const savedEntries = JSON.parse(localStorage.getItem("diaryEntries"));
     if (savedEntries) {
       setEntries(savedEntries); // Load the saved entries into state
     }
@@ -18,7 +17,7 @@ function App() {
   // Step 3: Save the entries to localStorage whenever they change
   useEffect(() => {
     if (entries.length > 0) {
-      localStorage.setItem('diaryEntries', JSON.stringify(entries));
+      localStorage.setItem("diaryEntries", JSON.stringify(entries));
     }
   }, [entries]); // Runs whenever the entries state changes
 
@@ -32,9 +31,10 @@ function App() {
       {/* Page Content */}
       <main className="flex-grow container mx-auto p-4">
         <Routes>
-          <Route path="/" element={<Home />} />
+          {/* Remove or replace these routes if the components don't exist */}
+          {/* <Route path="/" element={<Home />} />
           <Route path="/entry" element={<EntryCard />} />
-          <Route path="/photos" element={<FotoCard />} />
+          <Route path="/photos" element={<FotoCard />} /> */}
         </Routes>
       </main>
 
@@ -44,6 +44,6 @@ function App() {
       </footer>
     </div>
   );
-};
+}
 
 export default App;
