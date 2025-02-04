@@ -1,10 +1,22 @@
+import { useState } from "react";
+import Modal from "./Modal";
+
 import FotoCard from "./FotoCard";
 // import { entry } from "../data/entrys";
-import { entrys } from "../data/entrys";
+import { entries } from "../data/entries.js";
 // Displays a preview of diary entries, making the app visually appealing.
 // Enables users to click and view details.
 
 const EntryCard = () => {
+    // State to store the selected entry
+    const [selectedEntry, setSelectedEntry] = useState(null);
+
+    // Function to set the selected entry when clicked
+    const openModal = (entry) => {
+        setSelectedEntry(entry);
+        console.log("Selected Entry", entry);
+    };
+
     const handleSubmit = (e) => {
         // Prevent the default form submission
         e.preventDefault();
@@ -15,10 +27,15 @@ const EntryCard = () => {
 
     return (
         <>
-            <div className="grid  grid-cols-4 gap-4 mt-4 ml-2 ">
+            <Modal
+                entry={selectedEntry}
+                onClose={() => setSelectedEntry(null)}
+            />
+
+            <div className="grid grid-cols-4 gap-6 mt-6 ml-2 auto-rows-min ">
                 <form
                     onSubmit={handleSubmit}
-                    className="bg-[#526664] mb-4 flex flex-col w-25 h-25">
+                    className="bg-primary mb-4 flex flex-col w-full">
                     <div className="flex flex-col h-full justify-center items-center ">
                         <button
                             type="submit"
@@ -45,9 +62,21 @@ const EntryCard = () => {
 
                 {/* <FotoCard {...entry} entry={entry} /> */}
 
-                {entrys.map((entry) => (
-                    <FotoCard key={entry.id} {...entry} />
-                ))}
+                {entries.map((entry) => {
+                    return (
+                        <FotoCard
+                            key={entry.id}
+                            {...entry}
+                            onClick={() => {
+                                console.log(
+                                    "✅ onClick wurde an FotoCard übergeben für:",
+                                    entry.title
+                                );
+                                openModal(entry);
+                            }}
+                        />
+                    );
+                })}
             </div>
         </>
     );

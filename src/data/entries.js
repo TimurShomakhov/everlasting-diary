@@ -1,4 +1,4 @@
-const entries = [
+export const entries = [
     {
         id: 1,
         title: "The Great Banana Debate",
