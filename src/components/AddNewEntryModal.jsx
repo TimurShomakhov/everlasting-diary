@@ -1,0 +1,110 @@
+import { useState } from "react";
+
+const AddEntryModal = ({ setIsAdding, handleSave }) => {
+    const [entry, setEntry] = useState({ title: "", date: "", image: "", content: "", tags: "", rate: "" });
+    const [rating, setRating] = useState(0);
+
+    return (
+        <div className="flex justify-center items-center min-h-screen bg-gray-100">
+            <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-3xl border">
+                {/* Header */}
+                <div className="flex justify-between items-center mb-4">
+                    <h2 className="text-xl font-semibold">What's on your mind?</h2>
+                    <button className="text-gray-500 text-xl cursor-pointer" onClick={() => setIsAdding(false)}>
+                        &times;
+                    </button>
+                </div>
+
+                {/* Form */}
+                <form>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                        {/* Title */}
+                        <div>
+                            <label className="block text-gray-700">Title</label>
+                            <input
+                                type="text"
+                                placeholder="Enter a short, meaningful title"
+                                value={entry.title}
+                                onChange={(e) => setEntry({ ...entry, title: e.target.value })}
+                                className="w-full p-2 border rounded bg-gray-100 text-gray-700"
+                            />
+                        </div>
+
+                        {/* Date */}
+                        <div>
+                            <label className="block text-gray-700">Date</label>
+                            <input type="date" value={entry.date} onChange={(e) => setEntry({ ...entry, date: e.target.value })} className="w-full p-2 border rounded bg-gray-100 text-gray-700" />
+                        </div>
+                    </div>
+
+                    {/* Thoughts */}
+                    <div className="mb-4">
+                        <label className="block text-gray-700">Your thoughts</label>
+                        <textarea
+                            placeholder="Write your thoughts, experiences, or ramblings here... No judgment, just memories!"
+                            value={entry.content}
+                            onChange={(e) => setEntry({ ...entry, content: e.target.value })}
+                            className="w-full p-2 border rounded bg-gray-100 text-gray-700 h-32"
+                        ></textarea>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                        {/* Image URL */}
+                        <div>
+                            <label className="block text-gray-700">Image URL</label>
+                            <input
+                                type="text"
+                                placeholder="Paste an image link (optional)"
+                                value={entry.image}
+                                onChange={(e) => setEntry({ ...entry, image: e.target.value })}
+                                className="w-full p-2 border rounded bg-gray-100 text-gray-700"
+                            />
+                        </div>
+
+                        {/* Tags */}
+                        <div>
+                            <label className="block text-gray-700">Tags</label>
+                            <input type="text" placeholder="e.g., #bananas #food" value={entry.tags} onChange={(e) => setEntry({ ...entry, tags: e.target.value })} className="w-full p-2 border rounded bg-gray-100 text-gray-700" />
+                        </div>
+                    </div>
+
+                    {/* Rating */}
+                    <div className="mb-4">
+                        <label className="block text-gray-700">How did you feel?</label>
+                        <div className="flex items-center gap-2">
+                            {/* Interactive Star Rating */}
+                            <div className="flex text-gray-400">
+                                {[1, 2, 3, 4, 5].map((star) => (
+                                    <span
+                                        key={star}
+                                        className={`text-2xl cursor-pointer ${rating >= star ? "text-yellow-500" : "text-gray-400"}`}
+                                        onClick={(e) => {
+                                            setRating(star);
+                                            setEntry({ ...entry, rate: star.toString() });
+                                            console.log(entry);
+                                        }}
+                                    >
+                                        &#9733;
+                                    </span>
+                                ))}
+                            </div>
+                            <span className="text-sm text-gray-500">Rate your experience (1 = Meh, 5 = Amazing)</span>
+                        </div>
+                    </div>
+
+                    {/* Buttons */}
+                    <div className="flex justify-end gap-4">
+                        <button type="button" className="px-4 py-2 border rounded text-gray-600 hover:bg-gray-200 cursor-pointer" onClick={() => setIsAdding(false)}>
+                            Cancel
+                        </button>
+                        <button type="button" className="px-4 py-2 bg-green-400 text-white rounded hover:bg-green-700 cursor-pointer" onClick={() => handleSave(entry)}>
+                            Save
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    );
+};
+
+export default AddEntryModal;
