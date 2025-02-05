@@ -1,5 +1,6 @@
 import Title from "./components/Title";
 import EntryCard from "./components/EntryCard";
+import Footer from "./components/Footer";
 import Modal from "./components/Modal";
 
 function App() {
@@ -13,7 +14,7 @@ function App() {
                 <Title />
                 <EntryCard />
             </div>
-            <Modal />
+            <Footer />
         </>
     );
 }
