@@ -1,11 +1,22 @@
 import { useState } from "react";
 
-const AddEntryModal = ({ setIsAdding, handleSave }) => {
-    const [entry, setEntry] = useState({ title: "", date: "", image: "", content: "", tags: "", rate: "" });
+const AddEntryModal = ({ addEntry, isOpen, setIsAdding }) => {
+    if (!isOpen) return null;
+    const [entry, setEntry] = useState({ id: "", title: "", date: "", image: "", content: "", tags: "", rate: "" });
     const [rating, setRating] = useState(0);
+    const handleSave = () => {
+        if (!entry.title || !entry.date || !entry.image || !entry.content) {
+            alert("All fields are required.");
+            return;
+        }
+        setEntry(entry);
+        addEntry(entry);
+        setEntry({ id: "", title: "", date: "", image: "", content: "", tags: "", rate: "" });
+        setIsAdding(false);
+    };
 
     return (
-        <div className="flex justify-center items-center min-h-screen bg-gray-100">
+        <dialog id="addNewEntryDialog" className="modal w-full">
             <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-3xl border">
                 {/* Header */}
                 <div className="flex justify-between items-center mb-4">
@@ -97,13 +108,20 @@ const AddEntryModal = ({ setIsAdding, handleSave }) => {
                         <button type="button" className="px-4 py-2 border rounded text-gray-600 hover:bg-gray-200 cursor-pointer" onClick={() => setIsAdding(false)}>
                             Cancel
                         </button>
-                        <button type="button" className="px-4 py-2 bg-green-400 text-white rounded hover:bg-green-700 cursor-pointer" onClick={() => handleSave(entry)}>
+                        <button
+                            type="button"
+                            className="px-4 py-2 bg-green-400 text-white rounded hover:bg-green-700 cursor-pointer"
+                            onClick={() => {
+                                handleSave(entry);
+                                setIsAdding(false);
+                            }}
+                        >
                             Save
                         </button>
                     </div>
                 </form>
             </div>
-        </div>
+        </dialog>
     );
 };
 
