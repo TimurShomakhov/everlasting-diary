@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router"; // Changed from react-router-dom to react-router
 import { useState, useEffect } from "react";
-
+import Footer from "./components/Footer";
 
 function App() {
   // Step 1: Create a state variable to hold the diary entries
@@ -38,10 +38,7 @@ function App() {
         </Routes>
       </main>
 
-      {/* Footer */}
-      <footer className="bg-gray-800 text-white text-center p-4 mt-4">
-        <p>&copy; {new Date().getFullYear()} Everlasting Diary. All rights reserved.</p>
-      </footer>
+      <Footer />
     </div>
   );
 }
