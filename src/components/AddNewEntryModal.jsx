@@ -2,16 +2,16 @@ import { useState } from "react";
 
 const AddEntryModal = ({ addEntry, isOpen, setIsAdding }) => {
     if (!isOpen) return null;
-    const [entry, setEntry] = useState({ id: "", title: "", date: "", image: "", content: "", tags: "", rate: "" });
+    const [entry, setEntry] = useState({ id: "", title: "", date: "", imgUrl: "", content: "", tags: [], rating: "" });
     const [rating, setRating] = useState(0);
     const handleSave = () => {
-        if (!entry.title || !entry.date || !entry.image || !entry.content) {
+        if (!entry.title || !entry.date || !entry.imgUrl || !entry.content) {
             alert("All fields are required.");
             return;
         }
         setEntry(entry);
         addEntry(entry);
-        setEntry({ id: "", title: "", date: "", image: "", content: "", tags: "", rate: "" });
+        setEntry({ id: "", title: "", date: "", imgUrl: "", content: "", tags: [], rating: "" });
         setIsAdding(false);
     };
 
@@ -66,8 +66,8 @@ const AddEntryModal = ({ addEntry, isOpen, setIsAdding }) => {
                             <input
                                 type="text"
                                 placeholder="Paste an image link (optional)"
-                                value={entry.image}
-                                onChange={(e) => setEntry({ ...entry, image: e.target.value })}
+                                value={entry.imgUrl}
+                                onChange={(e) => setEntry({ ...entry, imgUrl: e.target.value })}
                                 className="w-full p-2 border rounded bg-gray-100 text-gray-700"
                             />
                         </div>

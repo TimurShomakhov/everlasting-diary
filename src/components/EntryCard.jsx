@@ -3,7 +3,7 @@ import Modal from "./Modal";
 import FotoCard from "./FotoCard";
 import { useEntries } from "../hooks/useEntries.js";
 // import { entry } from "../data/entrys";
-//import { entries } from "../data/entries.js";
+
 import AddEntryModal from "./AddNewEntryModal.jsx";
 // Displays a preview of diary entries, making the app visually appealing.
 // Enables users to click and view details.
