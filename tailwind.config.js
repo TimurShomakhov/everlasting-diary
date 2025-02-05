@@ -1,5 +1,3 @@
-import daisyui from "daisyui";
-
 /** @type {import('tailwindcss').Config} */
 export default {
     content: [
@@ -13,11 +11,12 @@ export default {
                 primary: "#526664", // Main color (dark green) for buttons and key UI elements
                 secondary: "#D3D9F5", // Secondary color (light blue) for tags and subtle UI elements
                 accent: "#F5E5B4", // Accent color (yellow) for highlights and ratings
+                bgSoft: "#FCFDFD",
             },
             fontFamily: {
                 sans: ["Roboto", "sans-serif"], // Set Roboto as the default sans-serif font
             },
         },
     },
-    plugins: [daisyui],
+    plugins: [require("daisyui")],
 };

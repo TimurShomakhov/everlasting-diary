@@ -1,36 +1,56 @@
-const FotoCard = ({ date, title, img }) => {
-  return (
-    <>
-      <div className="w-25 h-25 rounded-t-lg">
-        <img className="rounded-t-lg h-18 w-25" src={img} alt={title} />
+import ExpandIcon from "../assets/icons/ExpandIcon";
 
-        <div className="flex shadow-lg">
-          <div>
-            <p className="text-[#ADADAD] text-[0.4rem] mt-[0.1rem] ml-[0.3rem]">
-              {date}
-            </p>
-            <h4 className="text-[0.4rem] ml-[0.3rem] mb-2">{title}</h4>
-          </div>
-          <div className="flex items-center justify-end ml-4  ">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="size-4 "
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M16.5 8.25V6a2.25 2.25 0 0 0-2.25-2.25H6A2.25 2.25 0 0 0 3.75 6v8.25A2.25 2.25 0 0 0 6 16.5h2.25m8.25-8.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-7.5A2.25 2.25 0 0 1 8.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 0 0-2.25 2.25v6"
-              />
-            </svg>
-          </div>
-        </div>
-      </div>
-    </>
-  );
+const FotoCard = ({ id, date, title, imgUrl, onClick }) => {
+    console.log("🟢 FotoCard received props:", { title, onClick });
+    return (
+        <>
+            <div className="card bg-base-100 w-full shadow-xl min-h-[250px]">
+                {/* Image */}
+                {imgUrl ? (
+                    <figure className="w-full h-48 overflow-hidden">
+                        <img
+                            src={imgUrl}
+                            alt={title}
+                            className="w-full h-full object-cover"
+                        />
+                    </figure>
+                ) : (
+                    <div className="w-full h-48 bg-primary flex items-center justify-center text-white text-lg">
+                        Nothing to see
+                    </div>
+                )}
+                {/* Content */}
+                <div className="card-body flex justify-between ">
+                    <div className="flex">
+                        <div>
+                            <p className="text-xs font-light">{date}</p>
+                            <h4 className="">{title}</h4>
+                        </div>
+
+                        <div
+                            className="flex items-center ml-auto cursor-pointer"
+                            onClick={() => {
+                                console.log(
+                                    "📢 Expand-Icon in FotoCard wurde geklickt!"
+                                );
+                                if (onClick) {
+                                    console.log(
+                                        "✅ onClick existiert, wird jetzt aufgerufen..."
+                                    );
+                                    onClick();
+                                } else {
+                                    console.log("❌ onClick ist undefined!");
+                                }
+                            }}>
+                            <button className="hover:text-primary">
+                                <ExpandIcon className="w-6 h-6" />
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </>
+    );
 };
 
 export default FotoCard;
