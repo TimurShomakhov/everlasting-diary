@@ -26,7 +26,8 @@ const EntryCard = () => {
         setSelectedEntry(entry);
         console.log("Selected Entry", entry);
     };
-    const displayAddingNewEntryModal = () => document.getElementById("addNewEntryDialog").showModal();
+    const displayAddingNewEntryModal = () =>
+        document.getElementById("addNewEntryDialog").showModal();
 
     const handleSubmit = (e) => {
         // Prevent the default form submission
@@ -38,16 +39,38 @@ const EntryCard = () => {
 
     return (
         <>
-            <AddEntryModal addEntry={addEntry} isOpen={isAdding} setIsAdding={setIsAdding} />
-            <Modal entry={selectedEntry} onClose={() => setSelectedEntry(null)} />
+            <AddEntryModal
+                addEntry={addEntry}
+                isOpen={isAdding}
+                setIsAdding={setIsAdding}
+            />
+            <Modal
+                entry={selectedEntry}
+                onClose={() => setSelectedEntry(null)}
+            />
 
-            <div className="grid grid-cols-4 gap-6 mt-6 ml-2 auto-rows-min ">
-                <form onSubmit={handleSubmit} className="bg-primary mb-4 flex flex-col w-full">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 auto-rows-min">
+                <form
+                    onSubmit={handleSubmit}
+                    className="bg-primary flex flex-col w-full card shadow-xl min-h-[250px]">
                     <div className="flex flex-col h-full justify-center items-center ">
-                        <button type="submit" onClick={() => setIsAdding(true)} className="text-white  rounded  text-[0.7rem] mt-2">
+                        <button
+                            type="submit"
+                            onClick={() => setIsAdding(true)}
+                            className="text-white  rounded ">
                             <div className="border border-white rounded-2xl mb-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className=" text-white ">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    strokeWidth={1.5}
+                                    stroke="currentColor"
+                                    className=" text-white ">
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        d="M12 4.5v15m7.5-7.5h-15"
+                                    />
                                 </svg>
                             </div>
                             New Entry
@@ -63,7 +86,10 @@ const EntryCard = () => {
                             key={entry.id}
                             {...entry}
                             onClick={() => {
-                                console.log("✅ onClick wurde an FotoCard übergeben für:", entry.title);
+                                console.log(
+                                    "✅ onClick wurde an FotoCard übergeben für:",
+                                    entry.title
+                                );
                                 openModal(entry);
                             }}
                         />
