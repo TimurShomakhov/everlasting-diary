@@ -31,8 +31,10 @@ function App() {
         <>
             <div className="">
                 <Header />
-                <Title />
-                <EntryCard />
+                <div className="container mx-auto py-10">
+                    <Title />
+                    <EntryCard />
+                </div>
             </div>
             <Footer />
         </>

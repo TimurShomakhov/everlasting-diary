@@ -32,14 +32,12 @@ const EntryCard = () => {
                 onClose={() => setSelectedEntry(null)}
             />
 
-            <div className="grid grid-cols-4 gap-6 mt-6 ml-2 auto-rows-min ">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 auto-rows-min">
                 <form
                     onSubmit={handleSubmit}
-                    className="bg-primary mb-4 flex flex-col w-full">
+                    className="bg-primary flex flex-col w-full card shadow-xl">
                     <div className="flex flex-col h-full justify-center items-center ">
-                        <button
-                            type="submit"
-                            className="text-white  rounded  text-[0.7rem] mt-2">
+                        <button type="submit" className="text-white  rounded ">
                             <div className="border border-white rounded-2xl mb-2">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
