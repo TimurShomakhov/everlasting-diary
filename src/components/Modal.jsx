@@ -34,7 +34,13 @@ const Modal = ({ entry }) => {
                                 {entry?.title}
                             </h3>
                             <p className="py-4">{entry?.content}</p>
-                            <div>{entry?.tags?.map((tag) => `#${tag} `)}</div>
+                            <div>
+                                {(Array.isArray(entry?.tags)
+                                    ? entry.tags
+                                    : entry?.tags?.split(" ") || []
+                                ).map((tag) => `#${tag} `)}
+                            </div>
+
                             <div className="flex text-gray-400">
                                 {[1, 2, 3, 4, 5].map((star) => (
                                     <span
