@@ -91,7 +91,7 @@ const AddEntryModal = ({ addEntry, isOpen, setIsAdding }) => {
                                         className={`text-2xl cursor-pointer ${rating >= star ? "text-yellow-500" : "text-gray-400"}`}
                                         onClick={(e) => {
                                             setRating(star);
-                                            setEntry({ ...entry, rate: star.toString() });
+                                            setEntry({ ...entry, rating: star.toString() });
                                             console.log(entry);
                                         }}
                                     >
