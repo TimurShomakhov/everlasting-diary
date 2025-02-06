@@ -1,7 +1,6 @@
 import EditIcon from "../assets/icons/EditIcon";
 import ShrinkIcon from "../assets/icons/ShrinkIcon";
 import { useEffect } from "react";
-import { entries } from "../data/entries";
 
 const Modal = ({ entry }) => {
     useEffect(() => {
@@ -35,7 +34,20 @@ const Modal = ({ entry }) => {
                                 {entry?.title}
                             </h3>
                             <p className="py-4">{entry?.content}</p>
-                            <div>{entry?.tags.map((tag) => `#${tag} `)}</div>
+                            <div>{entry?.tags?.map((tag) => `#${tag} `)}</div>
+                            <div className="flex text-gray-400">
+                                {[1, 2, 3, 4, 5].map((star) => (
+                                    <span
+                                        key={star}
+                                        className={`text-2xl cursor-pointer ${
+                                            entry?.rating >= star
+                                                ? "text-yellow-500"
+                                                : "text-gray-400"
+                                        }`}>
+                                        &#9733;
+                                    </span>
+                                ))}
+                            </div>
                         </div>
 
                         {/* Right side: Image (4 columns) */}
@@ -57,7 +69,7 @@ const Modal = ({ entry }) => {
                     <div className="modal-action flex justify-center gap-4 mt-6 ">
                         <form method="dialog">
                             {/* if there is a button, it will close the modal */}
-                            <button className="btn bg-primary text-white font-normal text-base  hover:bg-primary hover:scale-105">
+                            <button className="py-2 px-4 bg-primary text-white font-normal text-base  hover:bg-primary hover:scale-105 rounded-btn">
                                 Close
                             </button>
                         </form>
