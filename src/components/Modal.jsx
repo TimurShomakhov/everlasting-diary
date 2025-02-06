@@ -29,7 +29,7 @@ const Modal = ({ entry }) => {
                     {/* Grid layout for content */}
                     <div className="grid grid-cols-12 gap-8 items-center">
                         {/* Left side: Date, Title, Content, Tags, Rating (6 columns starting from column 2) */}
-                        <div className="col-span-6 col-start-2">
+                        <div className="col-span-12 sm:col-span-6 sm:col-start-2">
                             <p className="font-light">{entry?.date}</p>
                             <h3 className="font-bold text-2xl">
                                 {entry?.title}
@@ -39,7 +39,7 @@ const Modal = ({ entry }) => {
                         </div>
 
                         {/* Right side: Image (4 columns) */}
-                        <div className="col-span-4">
+                        <div className="col-span-12 sm:col-span-4">
                             {entry?.imgUrl ? (
                                 <img
                                     src={entry.imgUrl}
@@ -54,10 +54,12 @@ const Modal = ({ entry }) => {
                         </div>
                     </div>
                     {/* Centered buttons at the bottom */}
-                    <div className="modal-action flex justify-center gap-4 mt-6">
+                    <div className="modal-action flex justify-center gap-4 mt-6 ">
                         <form method="dialog">
                             {/* if there is a button, it will close the modal */}
-                            <button className="btn">Close</button>
+                            <button className="btn bg-primary text-white font-normal text-base  hover:bg-primary hover:scale-105">
+                                Close
+                            </button>
                         </form>
                     </div>
                 </div>

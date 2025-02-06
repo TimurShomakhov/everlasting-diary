@@ -35,7 +35,7 @@ const EntryCard = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 auto-rows-min">
                 <form
                     onSubmit={handleSubmit}
-                    className="bg-primary flex flex-col w-full card shadow-xl">
+                    className="bg-primary flex flex-col w-full card shadow-xl min-h-[250px]">
                     <div className="flex flex-col h-full justify-center items-center ">
                         <button type="submit" className="text-white  rounded ">
                             <div className="border border-white rounded-2xl mb-2">

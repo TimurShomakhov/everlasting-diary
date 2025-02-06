@@ -15,7 +15,7 @@ const FotoCard = ({ id, date, title, imgUrl, onClick }) => {
                         />
                     </figure>
                 ) : (
-                    <div className="w-full h-48 bg-primary flex items-center justify-center text-white text-lg">
+                    <div className="w-full h-48 bg-primary flex items-center justify-center text-white text-lg rounded-t-2xl">
                         Nothing to see
                     </div>
                 )}
