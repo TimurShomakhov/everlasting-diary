@@ -1,7 +1,6 @@
 import EditIcon from "../assets/icons/EditIcon";
 import ShrinkIcon from "../assets/icons/ShrinkIcon";
 import { useEffect } from "react";
-import { entries } from "../data/entries";
 
 const Modal = ({ entry }) => {
     useEffect(() => {
@@ -31,25 +30,24 @@ const Modal = ({ entry }) => {
                         {/* Left side: Date, Title, Content, Tags, Rating (6 columns starting from column 2) */}
                         <div className="col-span-6 col-start-2">
                             <p className="font-light">{entry?.date}</p>
-                            <h3 className="font-bold text-2xl">
-                                {entry?.title}
-                            </h3>
+                            <h3 className="font-bold text-2xl">{entry?.title}</h3>
                             <p className="py-4">{entry?.content}</p>
-                            <div>{entry?.tags.map((tag) => `#${tag} `)}</div>
+                            <div>{entry?.tags?.map((tag) => `#${tag} `)}</div>
+                            <div className="flex text-gray-400">
+                                {[1, 2, 3, 4, 5].map((star) => (
+                                    <span key={star} className={`text-2xl cursor-pointer ${entry?.rating >= star ? "text-yellow-500" : "text-gray-400"}`}>
+                                        &#9733;
+                                    </span>
+                                ))}
+                            </div>
                         </div>
 
                         {/* Right side: Image (4 columns) */}
                         <div className="col-span-4">
                             {entry?.imgUrl ? (
-                                <img
-                                    src={entry.imgUrl}
-                                    alt={entry.title || "Example"}
-                                    className="w-full rounded-lg"
-                                />
+                                <img src={entry.imgUrl} alt={entry.title || "Example"} className="w-full rounded-lg" />
                             ) : (
-                                <div className="w-full h-48 bg-primary flex items-center justify-center text-white text-lg rounded-lg">
-                                    No Image Available
-                                </div>
+                                <div className="w-full h-48 bg-primary flex items-center justify-center text-white text-lg rounded-lg">No Image Available</div>
                             )}
                         </div>
                     </div>
